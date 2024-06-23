@@ -1,0 +1,51 @@
+\documentclass{homework}
+\begin{document}
+\section{Filtered Sentences}
+%Organize, in a schematic way, the information that can be extracted from the Natural Language Sentences
+
+The owner of a bookstore needs an online platform to sell and check his books. he wants to easily track profits, sales graph and daily to annual sales.\\
+
+The system will manage \textbf{four} different \textbf{user} roles:
+\begin{itemize}
+    \item \textbf{Owner}: is the legal owner of the company and the site. 
+     -Identified by e-mail and password.
+	can access all the information about the books.
+	can access the database updates.
+	can access to sales tables like monthly sales,annual sales etc.
+
+    \item \textbf{Warehouse}: Employees of the company. They can add new books to the system, update the data of the existing book, and keep track of stock.
+        -Identified by name, surname, id, email,password and department
+	can access all data about books
+	can add new data
+	can edit data
+
+    \item \textbf{Customer}: can access book’s information and buy books.
+         -Idefined by name, surname, e-mail, password, telephone number, address and card information.
+	can access to book stocks
+	can access all the data of books
+	can search for authors, publisher etc.
+	can create an order
+  \item \textbf{Sales }: Other employees of the bookstore 
+-Identified by name, surname, id,password, email, department
+Receive the order from customersCreate the reports of purrchases 
+Can access all the information about books
+Can access inventory
+Can receive the order from customers
+Can access data of the customers
+\item \textbf{Inventory}: 
+   -Report which is written by Warehouse department team regarding the books which are still in the warehouse. 
+Can be accessed by Owner and Sales
+ \item \textbf{Reports}: 
+      -It is prepared by employees using sales data. Visualization of monthly, annual sales figures, which category sells more, etc. 
+Can be accessed by Owner.
+
+\end{itemize}
+
+
+\noindent The customer can buy one or more \textbf{books}. A \textbf{book};
+\begin{itemize}
+    \item  - identified by bookID, title, author, language, publisher, number of pages, price,quantity of books, categories of book.
+    \end{itemize}
+\noindent 
+ Owner ,employees and customer have access to all book information.
+\end{document}

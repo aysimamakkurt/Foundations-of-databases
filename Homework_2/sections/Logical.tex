@@ -1,0 +1,127 @@
+\subsection{Transformation of the Entity-Relationship Schema}
+
+
+\subsubsection{Redundancy Analysis}
+The schema does not contain any cycle of entities.
+\subsubsection{Choice of Principal Identifiers}
+The main identifiers comply with the selection criteria.
+
+\subsection{Analysis of Database Load}
+Since there is not any derived attribute in the provided ER-Schema, we provide the load analysis as if the Book entity had the number of copies as derived attribute. Consider the following two operations that involve the redundant attribute 'numberofcopies': \newline
+\includegraphics[scale=0.4]{sections/Relation.jpeg} \newline
+O1 - Insert new copy : store a new copy together with its book ID. 
+
+O2 - Print data about a book: print all the data about a book, including the number of copies 
+
+O3 - Summarise data about all the books: summarise all the data about all the books, including the number of copies 
+In Table 3 the two operations are described.
+Table 3: Operations description and frequency 
+\begin{center}
+\begin{tabular}{|r|r|r|r|}
+\hline
+
+    Operation & Description & Frequency & Type\\\hline
+   
+O1 : Add new copy & store a new copy together \\ &with book ID  & 100/day & Online \\\hline
+O2 : Print data about a book & print all the data about a book, \\ &including the number of copies  & 2/day  & Online \\\hline
+O3 : Summarize data about \\ all the books & summarize all the data about\\ & all the books, \\&including the number of copies  &1/week   & Batch \\\hline
+
+   
+\end{tabular}
+\end{center}
+
+
+
+In Table  4 we report the access/volume data related to O1 with redundancy. The Book entity has a read access to get the current value for "numberofcopies" attribute, and a write access to update this value. 
+
+Table 4: Access/volume Table for Operation 1 with redundancy .\\
+
+\begin{center}
+\begin{tabular}{|r|r|r|r|r|}
+\hline
+\multicolumn{5}{|l|}{O1}\\\hline
+    Concept & Construct & Access & Type & Average 
+    Access\\\hline
+    {Copy} &  {Entity} &  {1}  & {W}  & {1x100x2=200 }\\\hline
+      {Belong } &  {Relationship} &  {1}  & {W}  & {1x100x2=200 }\\\hline
+    {Book } &  {Entity} &  {1}  & {R}  & {1x100x1=100 }\\\hline
+     {Book } &  {Entity} &  {1}  & {W}  & {1x100x2=200 }\\\hline
+
+    \multicolumn{4}{|l}{Total Access}&\multicolumn{1}{|l|}{700}\\\hline
+\end{tabular}
+\end{center}
+In Table  5 we report the access/volume data related to O2 with redundancy. The presence of redundancy allows us to perform one access to the Book entity to get all the required information. 
+
+Table 5: Access/volume Table for Operation 2 with redundancy 
+\begin{center}
+\begin{tabular}{|r|r|r|r|r|}
+\hline
+\multicolumn{5}{|l|}{O2}\\\hline
+    Concept & Construct & Access & Type & Average 
+    Access\\\hline
+      {Book } &  {Entity} &  {1}  & {R}  & {1x2x1=2 }\\\hline
+
+    \multicolumn{4}{|l}{Total Access}&\multicolumn{1}{|l|}{2}\\\hline
+\end{tabular}
+\end{center}
+In Table  6 we report the access/volume data related to O1 without redundancy. In this case we have to consider the insertion of a new instance in copy, and the insertion of a new instance in belong  to store the book the copy joined. 
+
+Table 6: Access/volume Table for Operation 1 without redundancy 
+
+\begin{center}
+\begin{tabular}{|r|r|r|r|r|}
+\hline
+\multicolumn{5}{|l|}{O1}\\\hline
+    Concept & Construct & Access & Type & Average Access\\\hline
+{Copy} &  {Entity} &  {1}  & {W}  & {1x100x2=200 }\\\hline
+      {Belong } &  {Relationship} &  {1}  & {W}  & {1x100x2=200 }\\\hline
+
+    \multicolumn{4}{|l}{Total Access}&\multicolumn{1}{|l|}{400}\\\hline
+\end{tabular}
+\end{center}
+In Table  7 we report the access/volume data related to O2 without redundancy. We considered 20 copies on average for each book. 
+
+Table 7: Access/volume Table for Operation 2 without redundancy 
+
+\begin{center}
+\begin{tabular}{|r|r|r|r|r|}
+\hline
+\multicolumn{5}{|l|}{O2}\\\hline
+
+    Concept & Construct & Access & Type & Average Access\\\hline
+         {Book } &  {Entity} &  {1}  & {R}  & {1x2x1=2  }\\\hline
+      {Belong } &  {Relationship} &  {20}  & {R}  & {20x2x1=40 }\\\hline
+
+   \multicolumn{4}{|l|}{Total Access}&\multicolumn{1}{|l|}{42}\\\hline
+\end{tabular}
+\end{center}
+In Table  8 we report the final access count with and without redundancy. According to the obtained results, removing the redundant attribute from the group entity improves the load analysis. 
+
+Table 8: Comparison of the number of accesses for each operation 
+
+
+\begin{center}
+\begin{tabular}{|r|r|r|}
+\hline
+     Operation & With Redundancy & Without Redundancy\\\hline
+    O1 & 700 & 400  \\\hline
+    O2 & 2 & 42 \\\hline
+    Total Access/Week & 702 & 442 \\\hline
+\end{tabular}
+\end{center}
+
+\subsection{Relational Schema}
+\includepdf[scale=0.9]{sections/Relational_sch.pdf}
+
+\subsection{Data Dictionary}
+
+\input{tables/data}
+
+\subsection{External Constraints}
+\begin{itemize}
+        
+        \item The admin can changes the book(add,delete,change price,change description) depending on his Role: we have to check the manageType and adminRole attributes to be compatible.
+        \item The customer can only purchase the book which is available in the warehouses: a copy should be purchased if it's stockAvalability is TRUE.
+        \item The package should be shipped by the shipper due to time limit that is announced in the website(for example it says in 3 working days it will be delivered): the placedTime and shipped\_ byDate should not violate this limit.
+        \item The customer should only chat to the admin whose Role is Support: the adminRole must be Support.
+    \end{itemize}

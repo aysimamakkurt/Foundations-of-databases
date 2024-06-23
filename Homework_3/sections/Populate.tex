@@ -1,0 +1,116 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\author{Aysima Merve Akkurt}
+
+\begin{document}
+
+\section{Populate the Database: Example}
+\\
+textcolor{red}{[Report SQL statements for the database population: one row per table is enough for the HW, but we suggest to insert a sufficient amount of data in your DB to run queries]}
+\lstset{language=SQL,
+keywordstyle=\color{blue},
+stringstyle=\color{mauve},
+showstringspaces=false,
+breaklines=true,
+commentstyle=\color{orange}\ttfamily,
+basicstyle=\ttfamily\footnotesize}
+
+\lstinputlisting[frame=single]{src/insert_data.sql}
+
+INSERT INTO "Book_Store"."Category" ("Name") \\
+VALUES ('Adventure stories')\\
+, ('Classics')\\
+, ('Crime')\\
+, ('Fairy tales, fables, and folk tales')\\
+, ('Fantasy')\\
+, ('Historical fiction')\\
+, ('Horror')\\
+, ('Humour and satire')\\
+, ('Literary fiction')\\
+, ('Mystery')\\
+, ('Poetry')\\
+, ('Plays')\\
+, ('Romance')\\
+, ('Science fiction')\\
+, ('Short stories')\\
+, ('Thrillers')\\
+, ('War')\\
+, ('Women’s fiction')\\
+, ('Young adult')\\
+, ('Autobiography and memoir')\\
+, ('Biography')\\
+, ('Essays')\\
+,('Non-fiction novel')\\
+,('Self-help')\\
+, ('Programming')\\
+\\\\\\
+INSERT INTO "Book_Store"."Author"("Name","Surname","URL","Email")\\
+VALUES ('Harvey','Deitel','','')\\
+, ('Paul','Deitel','','')\\
+, ('Tem','Nieto','','')\\
+, ('Sean','Santry','','')\\
+\\\\\\
+INSERT INTO "Book_Store"."Publisher"("Name","URL","Email","Phone")\\
+VALUES ('Prentice Hall','','','')\\
+, ('Prentice Hall  PTG','','','')\\
+\\\\\\
+INSERT INTO "Book_Store"."Book"\\("Title","Price","Pages","Language","Description","ISBN")\\
+VALUES ('C How to Program','69.95','1008','English','','0130895725')\\
+, ('The Complete C++ Training Course','109.95','1264','English','','0139163050')\\
+, ('Java How to Program','129.95','1296','English','','0130125075')\\
+, ('Internet and World Wide Web How to Program','69.95','960','English','','0130161438')\\
+, ('e-Business and eCommerce How to Program','69.95','1312','English','','0132261197')\\
+\\\\\\
+INSERT INTO "Book_Store"."Customer"("Name","Address","Email","Surname","Password",\\"Phone")\\
+VALUES ('Aysima','Padova','aysimaakkurt@gmail.com','Akkurt','59541565fasf','+395551655151')
+, \\('Ali','Vicenza','aliyildirim@gmail.com','Yildirim','sdf5599ag','+39565677771')\\\\\\\\
+INSERT INTO "Book_Store"."Has"("Category_ID","ISBN")\\
+VALUES ('25','0130895725')\\
+, ('25','0139163050')\\
+, ('25','0130125075')\\
+,('25','0130161438')\\
+,('25','0132261197')\\
+\\\\\\
+INSERT INTO "Book_Store"."Published_by"("Publisher_ID","Date","ISBN")\\
+VALUES ('1','2018-11-03','0130895725')\\
+, ('1','2017-10-13','0139163050')\\
+, ('1','2007-03-28','0130125075')\\
+, ('2','2019-02-11','0130161438')\\
+,('2','2017-07-25','0132261197')\\
+\\\\\\
+INSERT INTO "Book_Store"."ShippingCompany"("Name","Phone")\\
+VALUES ('AP Moller-Maersk Group', '+1654658465645'),\\
+('Mediterranean Shipping Company S.A.', '+6555655665'),\\
+('China Cosco ','+22441654531')\\
+\\\\\\
+INSERT INTO "Book_Store"."Warehouse"("Address")\\
+VALUES ('Padova'), ('Vicenza'), ('Treviso')\\
+\\\\\\
+INSERT INTO "Book_Store"."Written_by"("Author_ID","Date","ISBN")\\
+VALUES ('14','2018-11-03','0130895725')\\
+, ('15','2017-10-13','0139163050')\\
+, ('16','2007-03-28','0130125075')\\
+, ('17','2019-02-11','0130161438')\\
+,('15','2017-07-25','0132261197')\\
+\\\\\\
+INSERT INTO "Book_Store"."Copy"("ISBN","Warehouse_ID","Availibility")\\
+VALUES ('0130895725','1','1')\\
+, ('0139163050','1','1')\\
+, ('0130125075','2','1')\\
+, ('0130161438','3','1')\\
+,('0132261197','2','1')\\
+\\\\\\
+INSERT INTO "Book_Store"."Package"("weight","Shipping_Company_ID","Date")\\
+VALUES ('0.5','1','2020-10-10')\\
+, ('0.7','2','2020-10-11')\\
+, ('0.3','3','2020-10-12')\\
+\\\\\\
+INSERT INTO "Book_Store"."Invoice"("Price","Description","Customer_ID","Timestamp","ISBN","Copy_Id","Package_ID")\\
+VALUES ('69.95','','1','"2017-07-23",  "13:10:11"','0130895725','1','1')\\
+,('69.95','','2','"2017-08-20",  "12:08:11"','0139163050','2','2')\\
+\\\\\\
+INSERT INTO "Book_Store"."Message"("Text","Admin_ID","Customer_ID","timestamp")\\
+VALUES ('Please upload new books','1','1','"2017-07-23",  "13:10:11"'),\\
+('I want to buy a book but I have a big problem','1','2','"2017-07-23","13:10:11"')
+\end{document}
+

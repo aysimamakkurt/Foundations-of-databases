@@ -1,0 +1,114 @@
+\begin{longtable}{|p{.20\columnwidth}|p{.20\columnwidth} |p{.30\columnwidth}|p{.25\columnwidth} |} 
+\hline
+\textbf{Entity} & \textbf{Description} & \textbf{Attributes} & \textbf{Identifier}  \\\hline
+
+
+Book & the Catalogue of the Books in our website which shows the book and its description to the customers & \begin{itemize}
+        \vspace{-1em}
+        \item ID: Book identifier (serial)
+         \item Description: a brief information about the book (text)
+        \item Title: title of the book(text)
+        \item price: the cost of the book (float)
+        \item pages: the number of pages of the book (integer)
+        \item Language: the language of the book in which the book is written to
+
+
+
+    \end{itemize}
+ &  ID\\\hline
+ 
+Author & the author of the book who has written it & \begin{itemize}
+        \vspace{-1em}
+        \item ID: author identifier (serial)
+        \item Name: Full name of the author(text)
+        \item URL: the link to the personal webpage of the author(text)
+        \item Email: email address of the author(text)
+    \end{itemize}
+ &  ID \\\hline
+ 
+ 
+  Copy & the physical book which is held in the warehouse and will be delivered to the customer & \begin{itemize}
+        \vspace{-1em}
+        \item ISBN: The International Standard Book Number is a numeric commercial book identifier that is intended to be unique. (serial)
+        
+    \end{itemize}
+ &  ISBN \\\hline
+ 
+ 
+   Publisher & The company who published the book & \begin{itemize}
+        \vspace{-1em}
+        \item ID: publisher identifier (serial)
+        \item Name: the name of the publishing company (text)
+        \item URL: publisher website link (text)
+        \item Phone: the phone number to access the publisher (integer)
+        \item Email: the publisher email (text)
+    \end{itemize}
+ &  ID \\\hline
+
+  Customer & the customer of the bookshop who logs in with their username and password and purchase the book, they can also chat with admins & \begin{itemize}
+        \vspace{-1em}
+        \item ID: identifier of the customer (serial)
+        \item Name: first name of the customer (text)
+        \item Address: the address of the customer which the books will be delivered to (text)
+        \item Email: email of the customer which is used also to log in
+        \item Phone: the phone number of the customer (integer)
+        \item surname: the last name of the customer (text)
+        \item Password: the password which is used to login to the system (text)
+    \end{itemize}
+ &  ID \\\hline
+ 
+   Admin & the admin of the system who logs in with username and password and can edit the information of each book,add or delete the books and chat with customers & \begin{itemize}
+        \vspace{-1em}
+        \item ID: identifier of the admin (serial)
+        \item Role: the role of the admin in the system,they can be in Support department or the ones who add or delete the books, change prices or write description of the books(Manage department) (text)
+        \item username: the username to login(text)
+        \item password: the pass word to login(text)
+    \end{itemize}
+ &  ID \\\hline
+ 
+   Message & the messages in the chat between customer and admins & \begin{itemize}
+        \vspace{-1em}
+        \item ID: identifier of the message(serial)
+        \item text: the text of the message written by admin and customer (text)
+    \end{itemize}
+ &  ID \\\hline
+ 
+   Invoice & the invoice or bill created after the customer purchase containing the information about order  & \begin{itemize}
+        \vspace{-1em}
+        \item ID: identifier of the invoice (serial)
+        \item Price: the price of the purchase
+        \item description: the notes about the purchase (text)
+    \end{itemize}
+ &  ID \\\hline
+ 
+   Warehouse & the warehouse of the shop which stores the physical books & \begin{itemize}
+        \vspace{-1em}
+        \item ID: identifier of the warehouse (serial)
+        \item address: the address of where the warehouse is located (text)
+    \end{itemize}
+ &  ID \\\hline
+ 
+   Category & the genre of the books & \begin{itemize}
+        \vspace{-1em}
+        \item ID: identifier of the category(serial)
+        \item Name: the name of the category (text)
+    \end{itemize}
+ &  ID \\\hline
+ 
+   Package & the package containing of a customer purchase and will be delivered & \begin{itemize}
+        \vspace{-1em}
+        \item ID: identifier of the package (serial)
+        \item weight: the weight of the package to calculate the cost of delivery (float)
+    \end{itemize}
+ &  ID \\\hline
+ 
+ 
+    shipping company & the company which collect the packages and delivers it to customer & \begin{itemize}
+        \vspace{-1em}
+        \item ID: identifier of the company
+        \item Name: name of the company
+        \item Phone: phone number of the company
+    \end{itemize}
+ &  ID \\\hline
+ 
+\end{longtable}

@@ -1,0 +1,81 @@
+\begin{longtable}{|p{.20\columnwidth}|p{.20\columnwidth} |p{.30\columnwidth}|p{.25\columnwidth} |} 
+\hline
+\textbf{Relationship} & \textbf{Description} & \textbf{Component Entities} & \textbf{Attributes} \\\hline
+
+
+Written\_by & it associates a book to an author and identifies the author who has written the book & \begin{itemize}
+        \vspace{-1em}
+        \item Author (1,N): an author has written several books and at least one
+        \item Book (1, N)
+    \end{itemize}
+ & date: the date in which the book was written by author \\\hline
+ 
+ Published\by & it associates a book to a publisher and identifies which publisher published the book & \begin{itemize}
+        \vspace{-1em}
+        \item Book (1, N)
+        \item Publisher (1,N) 
+    \end{itemize}
+ &  date: the date in which the book was published by publisher \\\hline
+ 
+  Has & it associates a Book to Categories and identifies the categorie(s) of a book & \begin{itemize}
+        \vspace{-1em}
+        \item Book (1, N)
+        \item Category (1, N)
+    \end{itemize}
+ &   \\\hline
+ 
+  Manage & it relates an admin to a book and shows which admin modified the book & \begin{itemize}
+        \vspace{-1em}
+        \item Book (1, N)
+        \item Admin (0,N): multiple admins can manage a book
+    \end{itemize}
+ &  Type: it shows the type of the management,it could be add,remove,modify \\\hline
+ 
+  Chat & it associates a customer to an admin and the message which has been used to chat between them & \begin{itemize}
+        \vspace{-1em}
+        \item Admin (0, N)
+        \item Customer (0, N)
+        \item Message (1, 1): a message is associated between one and only one customer and admin
+    \end{itemize}
+ &  timestamp: the time of the chat took place at \\\hline
+ 
+  Belong & it associates a copy to a book & \begin{itemize}
+        \vspace{-1em}
+        \item Book (0, N)
+        \item Copy (1, 1): a copy can belong to one and only one book
+    \end{itemize}
+ &   \\\hline
+ 
+  Purchase & it associates a customer to a copy and the invoice created for this order & \begin{itemize}
+        \vspace{-1em}
+        \item Customer (0, N)
+        \item Copy (0, 1): a copy can be purchased only by one customer
+        \item Invoice (1, 1)
+    \end{itemize}
+ &  timestamp: the time in which the purchase took place at \\\hline
+ 
+  Stock & it associates a Copy to a warehouse and identifies a copy is held in which warehouse & \begin{itemize}
+        \vspace{-1em}
+        \item Copy (0, 1)
+        \item warehouse (0, N)
+    \end{itemize}
+ &  availability: a boolean which tells us if a book is available or not \\\hline
+ 
+  Placed & it associates a copy to an invoice (which was made through the purchase) to a packages,it shows which packages contains the copies bought by the customer & \begin{itemize}
+        \vspace{-1em}
+        \item invoice (1, 1)
+        \item Copy (0, 1)
+        \item Package (1, 1)
+        
+
+    \end{itemize}
+ &  Time: time of the package was packed  \\\hline
+ 
+  Shipped\_by & it relates a package to a shipping company and shows the package was shipped by which company & \begin{itemize}
+        \vspace{-1em}
+        \item Package (1, 1)
+        \item Shipping Company (0, N)
+    \end{itemize}
+ &  date: date of the shipping \\\hline
+
+\end{longtable}

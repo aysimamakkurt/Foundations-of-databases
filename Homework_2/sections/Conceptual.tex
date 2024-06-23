@@ -1,0 +1,85 @@
+\section{Conceptual Design}
+
+\subsection{Variations to the Requirement Analysis}
+we changed some parts of the last homework to make it better as follows:
+
+Owner, Inventory, Sales are removed and other entities which are mentioned in the following tables have been added to our schema. 
+A modern database is needed which makes a bookshop able to sell its books through an online platform. This system has customers and admins as users. Customers login with their email and password and can take a look at the items of the shop and buy them or chat with the support department. Admins can login with their username and password and modify the books in the website or answer the customers(based on their role in the system). Every book in the system has its own publisher and writer and the copies of these books are held in the warehouses. After a purchase is made , Items are packed into a package and they are sent to the customer using different shipping companies in maximum 3 working days.
+\subsection{Entity-Relationship Schema}
+\includepdf[scale=0.9]{sections/ERschema.pdf}
+\subsection{Data Dictionary}
+
+\subsubsection{Entities Table}
+\input{tables/entities}
+
+
+\subsubsection{Relationships Table}
+\input{tables/relationships}
+
+\subsection{External Constraints}
+\begin{itemize}
+        
+        \item The admin can changes the book(add,delete,change price,change description) depending on his Role
+        \item The customer can only purchase the book which is available in the warehouses.
+        \item The package should be shipped by the shipper due to time limit that is announced in the website(for example it says in 3 working days it will be delivered)
+        \item The customer should only chat to the admin whose Role is Support.
+    \end{itemize}
+    
+\subsection{Functional Requirements Satisfaction Check}
+The system must allow:
+\begin{itemize}
+\item \textbf{To store customer information}
+\end{itemize}
+All the information about the customer are stored as attributes. There are attributes like:
+\begin{enumerate}
+\item Address
+\item Name
+\item ID
+\item E-mail
+\item Phone
+\end{enumerate} 
+Address is a necessary information about the functionality of the bookstore since the shipper must know where he needs to send the products that are bought by the customer. 
+
+\begin{itemize}
+\item \textbf{To store information about the books}
+\end{itemize}
+Each book will have its own details. The attributes of this entity are: 
+\begin{enumerate}
+\item ID
+\item Title
+\item Description
+\item Language
+\item Price
+\item Pages
+\end{enumerate}
+They will hold all the necessary information about this entity. 
+
+\begin{itemize}
+\item \textbf{To manage multiple purchases by each customer} 
+\end{itemize}
+The "Copy" entity and its 'Purchase' relationship with "Customer" and the cardinality of these relations make it possible that a customer can buy multiple copies of the same book or different books.
+
+\begin{itemize}
+\item \textbf{To store information about the purchases that are done}
+\end{itemize}
+The ternary 'Purchase' relationship between 'Customer', 'Copy', 'Invoice' ensures that every purchase will be stored in the database together with the timestamp which will hold information about the time when a customer has purchased a copy of a book
+
+\begin{itemize}
+\item \textbf{The Ability to add new books on the system of the bookshop and modifies data related to existing books}
+\end{itemize}
+The menage relationship between the admin and the book entity make it possible for admin to add, delete, update the data that is stored for a book.
+
+\begin{itemize}
+\item \textbf{Admin and customers to log in}
+\end{itemize}
+Both entities 'Admin' and 'Customer' have attributes which will help them to log into the application. Admin will log in using username and password. The customers will log in using email and their passwords.    
+
+\begin{itemize}
+\item \textbf{Has to store information about the packages that are created and the company that will ship a package }
+\end{itemize}
+'Package' entity and '\texttt{Shipped\_by}' relationship ensures that this requirement will be satisfied. The 'Package' will store information about all the copies that are purchased by a customer in the same timestamp. \texttt{Shipped\_by} on the other hand relates the package with the company that will deliver it. 
+
+\begin{itemize}
+\item \textbf{The database will store information about different authors and publisher}
+\end{itemize}
+Author and Publisher are two entities in our database that will contain the required data and meet this criteria. The unique ID assigned to each author and publisher will serve as their identify. In addition, there will be more characteristics concerning other information.

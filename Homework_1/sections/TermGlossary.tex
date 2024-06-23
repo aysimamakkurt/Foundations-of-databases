@@ -1,0 +1,45 @@
+\section{Term Glossary}
+%The most important terms
+
+%\begin{table}[!ht]
+%    \centering
+%    \begin{tabular}{c|c}
+%         &  \\
+%         & 
+%    \end{tabular}
+%    \caption{Caption}
+%    \label{tab:my_label}
+%\end{table}
+
+
+
+%\begin{longtblr}[
+%  caption = {Long Title},
+%  label = {tab:test},
+%]{
+%  colspec = {|XX[4]|},
+%  rowhead = 1,
+%  hlines,
+%  row{even} = {gray9},
+%  row{1} = {olive9},
+%} 
+%
+%\end{longtblr}
+
+\begin{longtable}{|p{.20\columnwidth}|p{.30\columnwidth} |p{.20\columnwidth}|p{.20\columnwidth}|} 
+\hline
+\textbf{Term} & \textbf{Description} & \textbf{Synonyms} & \textbf{Connection} 
+\\\hline
+
+Books         & A list of all the available books in the warehouse and ready to be purchased   &                   & Warehouse, Customer, Sales, Owner \\ \hline
+Customer      & Customers can sign in to the system and pick any books and create their orders  &                   & Order,Book,Address \\ \hline
+Order         & The details of the purchase made by each customer,including the id of the books and address &       & Customer,Sales, Book, Address  \\ \hline
+Owner      & The owner of the database reads the report and     &  Director                & Reports, Inventory,Boooks \\ \hline
+Warehouse   & Insert the information about the books             & Warehouse Department    & Inventory, Books \\ \hline
+Sales       & Receive the order from customers and send them with cooperation with the warehouse,finally they create reports of purchases   &               & Books, Order, Reports, Inventory \\ \hline
+Inventory     & Report which is written by Warehouse department team regarding the books which are still in the warehouse &     &Warehouse, Owner, Sales 
+
+\hline
+\caption{Describe in this table the terms of your system}
+\label{tab:termGlossary}
+\end{longtable}

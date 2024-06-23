@@ -1,0 +1,20 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Foundations of Databases A.Y. 2022-2023
+\\Homework 2 – Conceptual and Logical Design
+}
+\author{Sandeep Kumar
+\\ 2041363}
+\date{November 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{External Constraints}
+\\1. A customer couldn't make more than one account with same credentials, so there should be a constraint that does not allow user registration with the same email and phone number, already existing in the database. 
+\\2.There are two specific roles associated with the Admin( one is who manages the books and their prices(Manager), one is customer support). Manager can have access to management of books and customer support service but the customer support is limited to just chat service.
+\\3. The package should be shipped by shipper due to time limit that announced in the website(for example it says in 3 working days it will be delivered),So the placedTime and shipped_byDate should not violate this limit.
+
+\end{document}
